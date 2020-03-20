@@ -1,0 +1,15 @@
+export(
+       eco,	
+       sim.eco,
+       gauss.hermite,
+       integrate.gh,
+       tapplysum.fast
+       )
+
+S3method(print, ecoreg)
+
+importFrom("graphics", "contour", "filled.contour", "image", "persp")
+importFrom("stats", "as.formula", "dbinom", "dnorm", "dpois",
+           "model.frame", "model.matrix", "model.offset",
+           "model.response", "optim", "optimize", "plogis", "qlogis",
+           "qnorm", "rbinom", "rnorm")

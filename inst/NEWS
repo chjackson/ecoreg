@@ -1,0 +1,37 @@
+-*- text -*-
+
+VERSION 0.1 (2005-07)
+
+* Initial release
+
+
+VERSION 0.1.1 (2006-03-06)
+
+* Proper vignette / PDF manual written. 
+
+* Bug fix - allow categorical covariates alone without binary
+* covariates.
+
+* Added "outcome" argument to allow Poisson as well as Binomial
+* outcomes.
+
+
+VERSION 0.2  (2010-08-24) 
+
+* First release on CRAN
+
+* References updated to published versions 
+
+* Maintainer email address updated 
+
+
+VERSION 0.2.1  (2015-08-23) 
+
+* Update to work with current CRAN check and restore the link to the
+  vignette
+
+
+VERSION 0.2.2  (2017-08-24)
+
+* Minor updates to work with R-devel update where squaring a data frame
+  no longer results in a matrix.
