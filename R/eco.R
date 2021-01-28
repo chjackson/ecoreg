@@ -44,8 +44,8 @@ function(formula,
       if (mod$ncat > 0) {
           phi.bin <- if (!is.null(phi.bin)) cbind(phi.bin, do.call("cbind", categorical)) else do.call("cbind", categorical)
           cats <- c(cats,  nlevs)
-          aoff <- c(rep(1, mod$nbin), nlevs - 1)
-          aoff <- lag(cumsum(aoff))
+          aoff <- cumsum(c(rep(1, mod$nbin), nlevs - 1))
+          aoff <- c(0, aoff[-length(aoff)])
           aoff <- replace(aoff, is.na(aoff), 0)
       }
       if (length(cats) > 0) {
@@ -57,6 +57,9 @@ function(formula,
           combs <- replace(combs, combs == 0, NA)
           
           whicha <-  lapply(split(combs, 1:nrow(combs)), function(x) aoff + x)
+          
+          ## one component per combination of categories 
+          ## result indexes the parameter vector 
           mod$whicha <- lapply(whicha, function(x)as.vector(na.omit(x)))
 
           ## Overwrite for the code that follows
