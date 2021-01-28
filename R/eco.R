@@ -55,8 +55,8 @@ function(formula,
           combs <- combs - 1
 ### Zero-th elements don't get picked, set to NA
           combs <- replace(combs, combs == 0, NA)
-          whicha <- t(apply(combs, 1, function(x) aoff + x))
-          whicha <- split(whicha, seq(nrow(whicha)))
+          
+          whicha <-  lapply(split(combs, 1:nrow(combs)), function(x) aoff + x)
           mod$whicha <- lapply(whicha, function(x)as.vector(na.omit(x)))
 
           ## Overwrite for the code that follows

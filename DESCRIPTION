@@ -1,7 +1,7 @@
 Package: ecoreg
 Title: Ecological Regression using Aggregate and Individual Data
-Version: 0.2.3
-Date: 2020-03-24
+Version: 0.2.4
+Date: 2021-01-28
 Author: Christopher Jackson <chris.jackson@mrc-bsu.cam.ac.uk>
 Description: Estimating individual-level covariate-outcome associations 
  using aggregate data ("ecological inference") or a combination of 

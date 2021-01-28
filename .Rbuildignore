@@ -15,3 +15,6 @@ inst/doc/auto$
 inst/doc/old$
 TODO
 tests
+^.*\.Rproj$
+^\.Rproj\.user$
+^doc$
