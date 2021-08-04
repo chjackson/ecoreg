@@ -295,7 +295,7 @@ loglik.eco <- function(pars, mod, adata, idata, gh.points=NULL, ...)
 {    
     alpha.c <- pars[1:(1+mod$nctx)] # area-level covariate effects
     alpha <- if (mod$nbineffs>0) pars[(2+mod$nctx):(1+mod$nctx+mod$nbineffs)] else NULL # individual-level binary covariate effects
-    beta <- if (mod$nnorm > 0) pars[(2+mod$nctx+mod$nbin):(1+mod$nctx+mod$nbin+mod$nnorm)] else NULL # individual-level normal covariate effects
+    beta <- if (mod$nnorm > 0) pars[(2+mod$nctx+mod$nbineffs):(1+mod$nctx+mod$nbineffs+mod$nnorm)] else NULL # individual-level normal covariate effects
     sig <- if (mod$random) exp(pars[mod$nctx+mod$nbineffs+mod$nnorm+2]) else 0
     if (mod$random) 
       loglik <- lik.eco.random(adata, idata, mod, alpha.c, alpha, beta, sig, gh.points, ...)
@@ -461,7 +461,6 @@ estimate.re <- function(adata, idata, mod, alpha.c, alpha, beta, sig)
         }
         else idi <- NULL
         allgroups <- 1
-browser()
         optfn <- function(U) -( sum ( lik.eco.fixed(U, aggi, indivi, adi, idi, mod, allgroups,
                                                     alpha.c, alpha, beta, sig, d=0, give.log=TRUE) ) # - log likelihood
                                + dnorm(U, log=TRUE) )
