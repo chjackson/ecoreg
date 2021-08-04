@@ -461,7 +461,7 @@ estimate.re <- function(adata, idata, mod, alpha.c, alpha, beta, sig)
         }
         else idi <- NULL
         allgroups <- 1
-browser()
+# browser()
         optfn <- function(U) -( sum ( lik.eco.fixed(U, aggi, indivi, adi, idi, mod, allgroups,
                                                     alpha.c, alpha, beta, sig, d=0, give.log=TRUE) ) # - log likelihood
                                + dnorm(U, log=TRUE) )
