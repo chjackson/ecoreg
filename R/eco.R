@@ -330,9 +330,9 @@ lik.agg <- function(U, adata, mod, allgroups, alpha.c, alpha, beta, sig, d=0)
 #    cat(alpha.c, "\n")
     if (mod$nnorm > 0) {
         if (mod$outcome=="binomial") {
-            c <- 16*sqrt(3) / (15 * pi)            
-            q <- q + as.numeric( (adata[,mod$norm.labs,drop=FALSE] %*% beta) /
-                                sqrt (1 + c*c* sapply(attr(adata, "norm.var"), function(x) beta %*% x %*% beta) ) )
+            c <- 16*sqrt(3) / (15 * pi)
+            q <- (q + as.numeric( (adata[,mod$norm.labs,drop=FALSE] %*% beta))) /
+                                sqrt(1 + c*c* sapply(attr(adata, "norm.var"), function(x) beta %*% x %*% beta) )
         }
         else 
           q <- q + as.numeric(adata[,mod$norm.labs,drop=FALSE] %*% beta +
