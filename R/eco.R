@@ -328,6 +328,12 @@ lik.agg <- function(U, adata, mod, allgroups, alpha.c, alpha, beta, sig, d=0)
     q <- q + U[match(adata[,"group"], allgroups)]*sig # input U: one per group in allgroups.  replicate to length of adata
     q <- q + adata[,"off"]
 #    cat(alpha.c, "\n")
+    if (mod$nbin + mod$ncat > 0) {
+        q <- outer(q, sapply(mod$whicha, function(x) sum(alpha[x])), "+")
+    }
+    if (mod$nstrata > 1) {
+        q <- array(outer(q, qlogis(mod$pstrata), "+"), dim=c(nrow(as.matrix(q)), ncol(as.matrix(q))*mod$nstrata))
+    }
     if (mod$nnorm > 0) {
         if (mod$outcome=="binomial") {
             c <- 16*sqrt(3) / (15 * pi)
@@ -337,12 +343,6 @@ lik.agg <- function(U, adata, mod, allgroups, alpha.c, alpha, beta, sig, d=0)
         else 
           q <- q + as.numeric(adata[,mod$norm.labs,drop=FALSE] %*% beta +
                               0.5 * sapply(attr(adata, "norm.var"), function(x) beta %*% x %*% beta) )
-    }
-    if (mod$nbin + mod$ncat > 0) {
-        q <- outer(q, sapply(mod$whicha, function(x) sum(alpha[x])), "+")
-    }
-    if (mod$nstrata > 1) {
-        q <- array(outer(q, qlogis(mod$pstrata), "+"), dim=c(nrow(as.matrix(q)), ncol(as.matrix(q))*mod$nstrata))
     }
     
     p <- rowSums(adata[,mod$phi.labs,drop=FALSE] * plogis(q))
