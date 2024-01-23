@@ -1,4 +1,4 @@
-### R code from vignette source 'ecoreg-guide.Rnw'
+### R code from vignette source 'C:/Users/Chris/OneDrive - University of Cambridge/work/ecoreg/ecoreg/vignettes/ecoreg-guide.Rnw'
 
 ###################################################
 ### code chunk number 1: ecoreg-guide.Rnw:19-21

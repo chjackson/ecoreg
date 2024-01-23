@@ -6,7 +6,6 @@ inst/doc/.+\.blg
 inst/doc/.+\.bib
 inst/doc/ecoreg-guide\.dvi
 inst/doc/ecoreg-guide\.Rnw
-inst/doc/ecoreg-guide\.R
 inst/doc/ecoreg-guide\.tex
 inst/doc/ecoreg-script\.r
 inst/doc/Sweave-local\.sty
